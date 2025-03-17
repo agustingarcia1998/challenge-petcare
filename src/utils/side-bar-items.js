@@ -1,3 +1,5 @@
+import { color } from "echarts";
+
 export const menuItems = [
   {
     section: "MENU",
@@ -9,22 +11,26 @@ export const menuItems = [
   {
     section: "ANALYTICS",
     listItems: [
-      { icon: "mdi-chart-line", text: "Health Monitoring", link: "#" },
+      { icon: "mdi-heart-box-outline", text: "Health Monitoring", link: "#" },
       { icon: "mdi-needle", text: "Vaccination Schedule", link: "#" },
     ],
   },
   {
     section: "SCHEDULE",
     listItems: [
-      { icon: "mdi-chat", text: "Chat", link: "#" },
-      { icon: "mdi-cog", text: "Appointments", link: "#" },
+      { icon: "mdi-message-outline", text: "Chat", link: "#" },
+      { icon: "mdi-calendar", text: "Appointments", link: "#", badge: { color:"red", notification: "2", icon: "mdi-circle-small"} },
     ],
   },
   {
     section: "HELP",
     listItems: [
-      { icon: "mdi-account", text: "Settings", link: "#" },
-      { icon: "mdi-settings", text: "Documentation", link: "#" },
+      { icon: "mdi-nut", text: "Settings", link: "#" },
+      { icon: "mdi-file-document", text: "Documentation", link: "#" },
     ],
   },
+  {
+    section: "",
+    listItems: [{ icon: "mdi-logout", text: "Logout", link: "#" }],
+  }
 ];

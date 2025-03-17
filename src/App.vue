@@ -25,5 +25,10 @@ export default {
 <style>
 body {
   font-family: 'Rethink Sans', sans-serif !important;
+  color: #0B1C33;
+}
+.title{
+  color: #0B1C33 !important;
+
 }
 </style>

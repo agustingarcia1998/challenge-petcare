@@ -5,9 +5,7 @@
       <v-select
         v-model="selectedTimeFrame"
         :items="timeFrames"
-        dense
-        outlined
-        style="max-width: 125px"
+        density="compact"
         class="select-health"
       />
     </v-card-title>
@@ -45,7 +43,7 @@ import {
   GridComponent,
   TooltipComponent,
   LegendComponent,
-  TitleComponent
+  TitleComponent,
 } from "echarts/components";
 
 echarts.use([
@@ -54,7 +52,7 @@ echarts.use([
   GridComponent,
   TooltipComponent,
   LegendComponent,
-  TitleComponent
+  TitleComponent,
 ]);
 
 export default defineComponent({
@@ -74,9 +72,11 @@ export default defineComponent({
         calories: [250, 300, 350, 400, 450, 500, 550],
       },
       chartOptions: {
-        title: {
-          text: "Health Monitoring Trends",
-          left: "center",
+        grid: {
+          left: "3%",   
+          right: "3%", 
+          top: "10%",  
+          bottom: "10%", 
         },
         tooltip: {
           trigger: "axis",
@@ -98,8 +98,18 @@ export default defineComponent({
         Daily: Array.from({ length: 31 }, (_, index) => (index + 1).toString()), // 31 días
         Weekly: ["Week 1", "Week 2", "Week 3", "Week 4"],
         Monthly: [
-          "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
         ],
       };
       return timeFrames[this.selectedTimeFrame] || [];
@@ -113,7 +123,9 @@ export default defineComponent({
         xAxis: { ...this.chartOptions.xAxis, data: labels },
         series: [
           {
-            name: this.selectedMetric.charAt(0).toUpperCase() + this.selectedMetric.slice(1),
+            name:
+              this.selectedMetric.charAt(0).toUpperCase() +
+              this.selectedMetric.slice(1),
             type: "line",
             data: data.slice(0, labels.length),
             itemStyle: { color: "#3788e5" },
@@ -144,28 +156,30 @@ export default defineComponent({
 
 <style scoped>
 .v-card {
-  background-color: #f5f5f5;
+  background-color: white;
   border-radius: 10px;
-  border: 1px solid #DAE3F8;
+  border: 1px solid #dae3f8;
   width: 882px;
-  height: 576px;
+  max-height: 576px;
 }
 
 .title-select {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 28px;
 }
 
 .select-health {
-  max-width: 120px;
+  max-width: 130px;
   height: 37px;
-  border: 1px solid #DAE3F8;
+  border: 1px solid #dae3f8;
   border-radius: 10px;
+  background-color: white;
 }
 
 .chart {
-  width: 805px;
+  width: 850px;
   height: 367px;
 }
 
@@ -174,20 +188,23 @@ export default defineComponent({
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  align-items: center;
+  padding: 20px;
   width: 826px;
   height: 67px;
 }
 
 .v-btn {
-  border-radius: 10px;
   padding: 10px 20px;
   width: 189px;
-  min-height: 48px;
+  max-height: 48px;
+  border-radius: 10px !important;
+
 }
 
 .v-btn--active {
-  background-color: #3788e5;
+  background-color: #1867C0;
   color: white;
+
 }
 </style>

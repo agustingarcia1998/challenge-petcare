@@ -1,6 +1,7 @@
 <template>
   <v-card class="card-percentage" elevation="0">
-    <v-card-title class="title-select">{{ metricItem.name }}
+    <v-card-title class="title-select">
+      <span class="title">{{ metricItem.name }}</span>
       <v-select 
         v-model="selectedOption"
         :items="timeframes"
@@ -13,7 +14,7 @@
         :model-value="percentageNumeric"
         :color="computedColor"
         size="205"
-        width="20"
+        width="15"
       >
         <span class="text-h4 percentage-text">{{ percentage }}</span>
       </v-progress-circular>
@@ -72,7 +73,7 @@ export default {
   width: 277px;
   height: 330px;
   border: 1px solid #DAE3F8;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .title-select{

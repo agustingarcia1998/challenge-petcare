@@ -1,16 +1,12 @@
 <template>
   <v-card class="chatsCont">
-    <v-card-title>CHAT</v-card-title>
+    <v-card-title>
+      <span class="title">CHAT</span>
+    </v-card-title>
     <v-list dense>
       <v-list-item v-for="(item, index) in conversations" :key="index">
         <div class="chat-item">
-          <!-- Avatar e indicador de estado -->
-          <v-avatar
-            :class="item.state === 'green' ? 'online' : 'offline'"
-            size="40"
-          >
-            <v-icon>mdi-account</v-icon>
-          </v-avatar>
+          <img :src="item.image" alt="foto de usuario" class="user-image" />
 
           <div class="chat-content">
             <div class="chat-header">
@@ -45,14 +41,14 @@ export default {
           message:
             "Luna has been scratching her ears a lot lately and shaking her head...",
           time: "15:56",
-          state: "green",
+          image: new URL("@/assets/user1.PNG", import.meta.url).href,
         },
         {
           name: "Kathryn Murphy",
           message:
             "The best way to treat an ear infection is to visit your local vet...",
           time: "Wed",
-          state: "green",
+          image: new URL("@/assets/user2.PNG", import.meta.url).href,
           notification: 2,
         },
         {
@@ -60,13 +56,13 @@ export default {
           message:
             "You should follow the instructions on the ear drops label...",
           time: "Tue",
-          state: "red",
+          image: new URL("@/assets/user3.PNG", import.meta.url).href,
         },
         {
           name: "Jim Brown",
           message: "Hi, I have a question about my cat.",
           time: "Tue",
-          state: "red",
+          image: new URL("@/assets/user4.PNG", import.meta.url).href,
         },
       ],
     };
@@ -93,28 +89,20 @@ export default {
   padding: 10px;
 }
 
-.online,
-.offline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: white;
-}
-
-.online {
-  background-color: rgb(89, 182, 89);
-}
-
-.offline {
-  background-color: rgb(241, 82, 82);
-}
-
 .chat-content {
   flex: 1;
   margin-left: 10px;
+}
+
+.user-image{
+  width: 51px;
+  height: 48;
+}
+
+:deep(.v-badge__badge) {
+  border-radius: 4px !important;
+  min-width: 18px;
+  height: 18px;
 }
 
 .chat-header {
@@ -136,7 +124,7 @@ export default {
 .chat-message {
   font-size: 13px;
   color: #555;
-  
+
   margin-top: 3px;
   max-width: 400px;
   white-space: nowrap;
