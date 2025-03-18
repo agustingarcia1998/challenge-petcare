@@ -11,18 +11,19 @@
           <div class="chat-content">
             <div class="chat-header">
               <span class="chat-name">{{ item.name }}</span>
-              <span class="chat-time">{{ item.time }}</span>
+              <div class="chat-time-container">
+                <span class="chat-time">{{ item.time }}</span>
+                <v-badge
+                  v-if="item.notification"
+                  color="red"
+                  :content="item.notification"
+                  overlap
+                  inline
+                  class="chat-notification"
+                ></v-badge>
+              </div>
             </div>
             <div class="chat-message">{{ item.message }}</div>
-          </div>
-
-          <div class="chat-notification" v-if="item.notification">
-            <v-badge
-              color="red"
-              :content="item.notification"
-              overlap
-              inline
-            ></v-badge>
           </div>
         </div>
       </v-list-item>
@@ -73,19 +74,17 @@ export default {
 <style scoped>
 .chatsCont {
   width: 677px;
-  height: 380px;
-  background-color: white;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  max-height: 380px;
   border: 1px solid #dae3f8;
   border-radius: 10px;
-  padding: 10px;
+  padding-top: 15px;
 }
 
 .chat-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 0px 10px 10px 10px;
 }
 
 .chat-content {
@@ -114,11 +113,29 @@ export default {
   font-weight: 550;
   font-size: 14px;
 }
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chat-time-container {
+  display: flex;
+  align-items: center;
+  position: relative; 
+}
 
 .chat-time {
   font-size: 12px;
-  color: gray;
+  color: gray; 
 }
+
+.chat-notification {
+  position: absolute;
+  top:20px;
+  right: 0;
+}
+
+
 
 .chat-message {
   font-size: 13px;

@@ -5,11 +5,7 @@
         <img src="@/assets/logo.png" />
         <v-list-item-title class="item-title">PetCare.</v-list-item-title>
       </div>
-      <div
-        v-for="(menu, index) in getMenuItems"
-        :key="index"
-        class="menu-items"
-      >
+      <div v-for="(menu, index) in menuItems" :key="index" class="menu-items">
         <v-list-subheader>{{ menu.section }}</v-list-subheader>
         <v-list-item
           v-for="(item, i) in menu.listItems"
@@ -41,7 +37,7 @@
           </div>
         </v-list-item>
         <v-divider
-          v-if="index < getMenuItems.length - 2"
+          v-if="index < menuItems.length - 2"
           class="my-2"
           color="black"
         ></v-divider>
@@ -55,10 +51,10 @@ import { menuItems } from "@/utils/side-bar-items";
 
 export default {
   name: "SideBar",
-  computed: {
-    getMenuItems() {
-      return menuItems;
-    },
+  data() {
+    return {
+      menuItems,
+    };
   },
   methods: {
     getImage(urlImage) {

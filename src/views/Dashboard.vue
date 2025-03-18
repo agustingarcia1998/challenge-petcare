@@ -35,7 +35,7 @@
       </div>
       <VaccinationSchedule class="vaccination" elevation="0" />
       <HealthMonitoring class="healthmonitoring" elevation="0" />
-      <Chats class="chat" />
+      <Chats class="chat" elevation="0"/>
     </div>
   </v-container>
 </template>
@@ -81,7 +81,7 @@ export default {
   grid-template-rows: auto 1fr;
   grid-gap: 25px;
   padding: 25px;
-  background-color: #f2f5fa;
+  background-color: #F2F5FA;
 }
 
 .percentage-container {
@@ -97,7 +97,6 @@ export default {
 .vaccination {
   grid-area: vaccination-schedule;
   border: 1px solid #dae3f8;
-  border-radius: 5px;
 }
 
 /* HealthMonitoring ocupa 3 columnas en la fila 2 */

@@ -10,6 +10,8 @@ npm run serve
 
 Se despliega un frontend reactivo con las siguientes funcionalidades:
 
--Select para filtros
+-Select para filtros en componentes que lo requieren
 
 -Gráfico dinámico que cambia según el tiempo o métrica seleccionada
+
+-Search bar funcional, para buscar por type o name.
