@@ -7,10 +7,13 @@
         </v-col>
         <v-col class="d-flex align-center justify-end">
           <v-text-field
+            v-if="showSearchInput"
+            density="compact"
+            rounded="lg"
+            variant="solo"
             class="search-vaccination"
             v-model="searchQuery"
-            append-inner-icon="mdi-magnify" 
-            v-if="showSearchInput"
+            append-inner-icon="mdi-magnify"
           />
           <v-btn v-else icon @click="showSearchInput = true">
             <v-icon>mdi-magnify</v-icon>
@@ -18,7 +21,9 @@
           <v-select
             v-model="filterDefault"
             :items="types"
-			placeholder="By type"
+            placeholder="By type"
+            rounded="lg"
+            variant="solo"
             density="compact"
             style="max-width: 110px; margin-left: 10px"
             class="select-vaccination"
@@ -40,7 +45,7 @@
         <tr v-for="(item, index) in filteredSchedule" :key="index">
           <td>{{ item.vaccine }}</td>
           <td>
-            <v-chip :color="getTypeColor(item.type)" small>
+            <v-chip :color="color(item.type)" small>
               {{ item.type }}
             </v-chip>
           </td>
@@ -49,13 +54,7 @@
             style="vertical-align: middle"
             v-if="item.veterinar === 'Find veterinar'"
           >
-            <v-btn
-              color="primary"
-              small
-              class="btn"
-            >
-              Find veterinar
-            </v-btn>
+            <v-btn color="#3788E5" small class="btn"> Find veterinar </v-btn>
           </td>
           <td v-else>{{ item.veterinar }}</td>
         </tr>
@@ -117,7 +116,7 @@ export default {
     },
   },
   methods: {
-    getTypeColor(type) {
+    color(type) {
       switch (type) {
         case "Overdue":
           return "pink lighten-4";
@@ -149,18 +148,33 @@ export default {
   width: 100%;
 }
 
-.search-vaccination {
-	max-width: 120px;
+:deep(.search-vaccination) {
+  max-width: 120px;
   height: 37px;
-  border: 1px solid #dae3f8;
+  border: 1px solid #dae3f8 !important;
   border-radius: 10px;
 }
 
-.select-vaccination {
-  max-width: 120px;
-  height: 37px;
-  border: 1px solid #dae3f8;
+.search-vaccination :deep(.v-field) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+:deep(.v-select) {
+  max-width: 130px;
+}
+
+:deep(.select-vaccination) {
+  height: 37px !important;
+  border: 1px solid #dae3f8 !important;
   border-radius: 10px;
+}
+
+.select-vaccination :deep(.v-field) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 th,

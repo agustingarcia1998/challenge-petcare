@@ -79,7 +79,6 @@ export default {
   border: 1px solid #dae3f8;
   border-radius: 10px;
   padding: 10px;
-  overflow-y: auto;
 }
 
 .chat-item {
@@ -94,7 +93,7 @@ export default {
   margin-left: 10px;
 }
 
-.user-image{
+.user-image {
   width: 51px;
   height: 48;
 }

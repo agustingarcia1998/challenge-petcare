@@ -5,7 +5,9 @@
       <v-select
         v-model="selectedTimeFrame"
         :items="timeFrames"
+        rounded="lg"
         density="compact"
+        variant="solo"
         class="select-health"
       />
     </v-card-title>
@@ -13,19 +15,19 @@
       <v-btn-toggle v-model="selectedMetric" class="metricsToggle">
         <v-btn value="stress">
           <v-icon left>mdi-heart-pulse</v-icon>
-          Stress level
+          <span class="metric-text">Stress level</span>
         </v-btn>
         <v-btn value="pulse">
           <v-icon left>mdi-pulse</v-icon>
-          Pulse
+          <span class="metric-text">Pulse</span>
         </v-btn>
         <v-btn value="temperature">
           <v-icon left>mdi-thermometer-low</v-icon>
-          Temperature
+          <span class="metric-text">Temperature</span>
         </v-btn>
         <v-btn value="calories">
           <v-icon left>mdi-fire</v-icon>
-          Calories burned
+          <span class="metric-text">Calories burned</span>
         </v-btn>
       </v-btn-toggle>
       <v-chart class="chart" :option="chartOptions" autoresize />
@@ -73,10 +75,10 @@ export default defineComponent({
       },
       chartOptions: {
         grid: {
-          left: "3%",   
-          right: "3%", 
-          top: "10%",  
-          bottom: "10%", 
+          left: "3%",
+          right: "3%",
+          top: "10%",
+          bottom: "10%",
         },
         tooltip: {
           trigger: "axis",
@@ -170,12 +172,20 @@ export default defineComponent({
   padding: 28px;
 }
 
-.select-health {
+:deep(.v-select) {
   max-width: 130px;
-  height: 37px;
-  border: 1px solid #dae3f8;
+}
+
+:deep(.select-health) {
+  height: 37px !important;
+  border: 1px solid #dae3f8 !important;
   border-radius: 10px;
-  background-color: white;
+}
+
+.select-health :deep(.v-field) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .chart {
@@ -191,20 +201,35 @@ export default defineComponent({
   align-items: center;
   padding: 20px;
   width: 826px;
-  height: 67px;
+  min-height: 67px;
 }
 
 .v-btn {
   padding: 10px 20px;
   width: 189px;
-  max-height: 48px;
+  min-height: 48px;
   border-radius: 10px !important;
-
 }
 
 .v-btn--active {
-  background-color: #1867C0;
+  background-color: #3788e5;
   color: white;
+}
 
+.metric-text {
+  margin-left: 10px;
+  color: #0b1c33;
+  opacity: 75%;
+}
+
+:deep(.v-icon) {
+  color: #0b1c33;
+  opacity: 80%;
+}
+
+.v-btn--active :deep(.v-icon),
+.v-btn--active .metric-text {
+  color: white !important;
+  opacity: 1 !important;
 }
 </style>

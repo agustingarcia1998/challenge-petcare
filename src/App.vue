@@ -2,7 +2,6 @@
   <v-app>
     <SideBar />
     <v-main>
-      <Dashboard />
       <v-container>
         <router-view />
       </v-container>
@@ -23,12 +22,17 @@ export default {
 </script>
 
 <style>
-body {
-  font-family: 'Rethink Sans', sans-serif !important;
-  color: #0B1C33;
+.v-container {
+  padding: 0;
+  margin: 0;
 }
-.title{
-  color: #0B1C33 !important;
 
+body {
+  font-family: "Rethink Sans", sans-serif !important;
+  color: #0b1c33;
+}
+.title {
+  color: #0b1c33;
+  opacity: 75%;
 }
 </style>

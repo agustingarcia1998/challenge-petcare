@@ -19,13 +19,13 @@ const router = createRouter({
     },
     {
       path: "/dashboard",
-      name: "dashboard",
-      components: Dashboard,
+      name: "dashboard-home",
+      component: Dashboard,
     },
     {
       path: "/:pathMatch(.*)*",
       name: "notFound",
-      components: NotFound
+      component: NotFound,
     },
   ],
 });
