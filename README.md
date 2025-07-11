@@ -4,7 +4,7 @@
 
 npm install
 
-npm run serve
+npm run server
 
 # Dirigirse al puerto que se visualiza en consola
 
